@@ -10,6 +10,7 @@ from app.models.forms import LoginForm
 def load_user(id):
     return User.query.filter_by(id=id).first()
 
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -28,11 +29,13 @@ def login():
             flash("Invalid login.")
     return render_template('login.html', form=form)
 
+
 @app.route("/logout")
 def logout():
     logout_user()
     flash("Logged out.")
     return redirect(url_for("index"))
+
 
 @app.route("/test")
 def test():
